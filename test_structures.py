@@ -98,6 +98,33 @@ def basic_8(weights=None, classes=5, classifier_activation='softmax'):
     return model
 
 
+def basic_15(weights=None, classes=5, classifier_activation='softmax'):
+    model = Sequential([
+        layers.Conv2D(128, 3, padding='same', activation='relu'),
+        layers.MaxPooling2D(),
+        layers.Conv2D(64, 3, padding='same', activation='relu'),
+        layers.MaxPooling2D(),
+        layers.Conv2D(32, 3, padding='same', activation='relu'),
+        layers.MaxPooling2D(),
+        layers.Conv2D(16, 3, padding='same', activation='relu'),
+        layers.MaxPooling2D(),
+        layers.Flatten(),
+        layers.Dense(1024, activation='relu'),
+        layers.Dense(512, activation='relu'),
+        layers.Dense(512, activation='relu'),
+        layers.Dense(512, activation='relu'),
+        layers.Dense(512, activation='relu'),
+        layers.Dense(256, activation='relu'),
+        layers.Dense(256, activation='relu'),
+        layers.Dense(256, activation='relu'),
+        layers.Dense(256, activation='relu'),
+        layers.Dense(128, activation='relu'),
+        layers.Dense(128, activation='relu'),
+        layers.Dense(classes, activation=classifier_activation)
+    ])
+    return model
+
+
 test_structure_small = {
     "VGG16": {
         "Preprocessing_function": tf.keras.applications.vgg16.preprocess_input,
@@ -173,6 +200,14 @@ test_structure_basic = {
     "sequential-8": {
         "Preprocessing_function": basic_preprocess,
         "Model_definition": basic_8,
+        "pref-size": (299, 299)
+    }
+}
+
+test_structure_basic_medium = {
+    "sequential-15": {
+        "Preprocessing_function": basic_preprocess,
+        "Model_definition": basic_15,
         "pref-size": (299, 299)
     }
 }

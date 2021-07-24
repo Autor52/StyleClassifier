@@ -11,12 +11,13 @@ from datetime import datetime
 from sklearn.model_selection import StratifiedKFold
 # from tensorflow.keras import mixed_precision
 
-from test_structures import test_structure_basic, test_structure_small, test_structure_large
+from test_structures import test_structure_basic, test_structure_small, test_structure_large, \
+    test_structure_basic_medium
 
 
 def test_model(model_name, definitions, data_train, data_test, category_train, category_test, split_filepath,
                num_classes):
-    # tf.config.set_visible_devices([], 'GPU')  # zakomentowac w przypadku korzystania z GPU
+    tf.config.set_visible_devices([], 'GPU')  # zakomentowac w przypadku korzystania z GPU
     # opt = tf.keras.optimizers.Adam(learning_rate=0.01)
     model = definitions['Model_definition'](weights=None,
                                             classes=num_classes)
