@@ -1,4 +1,5 @@
 # skrypt pobierajacy obrazy z google
+# oryginał: https://towardsdatascience.com/image-scraping-with-python-a96feda8af2d
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
